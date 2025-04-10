@@ -1,0 +1,23 @@
+export default [
+    "CODCENCUS",
+    "DESCRCENCUS",
+    "CALCELALURPARTEA",
+    "ATIVO",
+    "ANALITICO",
+    "VEICULO",
+    "CODUSURESP",
+    "CODPARCRESP",
+    "AREA",
+    "CODUNN",
+    "DTINCLUSAO",
+    "AREAREAL",
+    "AREACONT",
+    "AREAPERM",
+    "CODTAB",
+    "FRACGEREN",
+    "FRACCONT",
+    "GRAU",
+    "CODUNG",
+    "CODPARC",
+    "CODCENCUSPAI"
+];
