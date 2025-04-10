@@ -26,7 +26,7 @@ const app = express();
 
 
 //Iniciando o JOB
-//startIntegracao();
+startIntegracao();
 //startIntegracaoManual();
 
 

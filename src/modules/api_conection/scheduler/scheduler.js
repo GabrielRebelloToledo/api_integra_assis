@@ -32,7 +32,7 @@ import IntegrationServiceTSICTA from '../services/financeiro/integration-save-TS
 import IntegrationServiceTGFTPV from '../services/negociacao/integration-save-TGFTPV.service.js';
 
 export function startIntegracao() {
-    cron.schedule('*/3 * * * *', async () => {
+    cron.schedule('35 20 * * *', async () => {
         console.log(`🔁 Tarefa executada às: ${new Date().toLocaleTimeString()}`);
         try {
             console.log("Iniciando o Agendador de Integração!");
@@ -67,20 +67,20 @@ async function getAutorizathion(callback) {
 async function integracoesEmSequencia() {
 
     /* Processos Pesados */
-    /* await integrandoParceiro();
+     /*  await integrandoCabecalhoNota();
+    await integrandoItemNota(); */
+
+    await integrandoParceiro();
     await integrandoProduto();
-    await integrandoCabecalhoNota();
-    await integrandoItemNota();
     await integrandoFinanceiro();
-    await integrandoMovimentoBancario(); */
-    await integrandoFinanceiro();
+    await integrandoMovimentoBancario()
     /* Processos Leves */
-   /*  await integrandoTipoNegociacao();
+    await integrandoTipoNegociacao();
     await integrandoBancos();
     await integrandoContas();
     await integrandoNaturezaFinanceira();
     await integrandoCentroCusto();
-    await integrandoEmpresa(); */
+    await integrandoEmpresa();
 }
 
 async function integrandoParceiro() {
