@@ -72,18 +72,27 @@ class IntegrationServiceTSICTA {
     tratarValor(valor) {
         if (!valor || valor === 'N/A') return null;
 
-        // Detecta se é uma data no formato DD/MM/YYYY HH:mm:ss
-        const regexDataBR = /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}$/;
+        // Detecta formato com hora: DD/MM/YYYY HH:mm:ss
+        const regexDataHora = /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}$/;
 
-        if (regexDataBR.test(valor)) {
+        // Detecta formato só com data: DD/MM/YYYY
+        const regexDataSimples = /^\d{2}\/\d{2}\/\d{4}$/;
+
+        if (regexDataHora.test(valor)) {
             const [data, hora] = valor.split(' ');
             const [dia, mes, ano] = data.split('/');
-            const dataISO = `${ano}-${mes}-${dia}T${hora}`;
-            const dataValida = new Date(dataISO);
-            return isNaN(dataValida) ? null : dataISO.replace('T', ' ');
+            const iso = `${ano}-${mes}-${dia}T${hora}`;
+            const date = new Date(iso);
+            return isNaN(date) ? null : iso.replace('T', ' ');
         }
 
-        // Se não for data, apenas retorna o valor original
+        if (regexDataSimples.test(valor)) {
+            const [dia, mes, ano] = valor.split('/');
+            const iso = `${ano}-${mes}-${dia}`;
+            const date = new Date(iso);
+            return isNaN(date) ? null : iso;
+        }
+
         return valor;
     }
 }

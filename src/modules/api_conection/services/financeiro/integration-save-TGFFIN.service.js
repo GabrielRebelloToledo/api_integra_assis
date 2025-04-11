@@ -67,33 +67,33 @@ class IntegrationServiceTGFFIN {
             return { status: 400, message: err }
         }
     }
-    
+
     tratarValor(valor) {
         if (!valor || valor === 'N/A') return null;
-      
+
         // Detecta formato com hora: DD/MM/YYYY HH:mm:ss
         const regexDataHora = /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}$/;
-      
+
         // Detecta formato só com data: DD/MM/YYYY
         const regexDataSimples = /^\d{2}\/\d{2}\/\d{4}$/;
-      
+
         if (regexDataHora.test(valor)) {
-          const [data, hora] = valor.split(' ');
-          const [dia, mes, ano] = data.split('/');
-          const iso = `${ano}-${mes}-${dia}T${hora}`;
-          const date = new Date(iso);
-          return isNaN(date) ? null : iso.replace('T', ' ');
+            const [data, hora] = valor.split(' ');
+            const [dia, mes, ano] = data.split('/');
+            const iso = `${ano}-${mes}-${dia}T${hora}`;
+            const date = new Date(iso);
+            return isNaN(date) ? null : iso.replace('T', ' ');
         }
-      
+
         if (regexDataSimples.test(valor)) {
-          const [dia, mes, ano] = valor.split('/');
-          const iso = `${ano}-${mes}-${dia}`;
-          const date = new Date(iso);
-          return isNaN(date) ? null : iso;
+            const [dia, mes, ano] = valor.split('/');
+            const iso = `${ano}-${mes}-${dia}`;
+            const date = new Date(iso);
+            return isNaN(date) ? null : iso;
         }
-      
+
         return valor;
-      }
+    }
 }
 
 export default IntegrationServiceTGFFIN;
