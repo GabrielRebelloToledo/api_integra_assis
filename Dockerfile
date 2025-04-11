@@ -12,6 +12,11 @@ FROM node:${NODE_VERSION}-alpine
 
 # Use production node environment by default.
 ENV NODE_ENV production
+ENV TZ=America/Sao_Paulo
+
+RUN apk add --no-cache tzdata \
+  && cp /usr/share/zoneinfo/${TZ} /etc/localtime \
+  && echo "${TZ}" > /etc/timezone
 
 
 WORKDIR /usr/src/app

@@ -32,11 +32,11 @@ import IntegrationServiceTSICTA from '../services/financeiro/integration-save-TS
 import IntegrationServiceTGFTPV from '../services/negociacao/integration-save-TGFTPV.service.js';
 
 export function startIntegracao() {
-    cron.schedule('10 22 * * *', async () => {
+    cron.schedule('30 22 * * *', async () => {
         console.log(`🔁 Tarefa executada às: ${new Date().toLocaleTimeString()}`);
         try {
             console.log("Iniciando o Agendador de Integração!");
-            startIntegracaoManual();
+            await getAutorizathion(integracoesEmSequencia);
         } catch (err) {
             console.error('❌ Erro durante carga programada:', err);
         }

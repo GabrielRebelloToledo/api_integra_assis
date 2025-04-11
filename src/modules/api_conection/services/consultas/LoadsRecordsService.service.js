@@ -39,7 +39,7 @@ class LoadsRecords {
                 orderby = "CODPARC ASC"
             }
 
-            console.log(JSON.stringify({
+            /* console.log(JSON.stringify({
                 "serviceName": "CRUDServiceProvider.loadRecords",
                 "requestBody": {
                     "dataSet": {
@@ -55,7 +55,7 @@ class LoadsRecords {
                         }
                     }
                 }
-            }))
+            })); */
 
 
             const token = await this.getToken();  // Reutiliza o token se disponível

@@ -24,6 +24,7 @@ import { startIntegracao, startIntegracaoManual } from './src/modules/api_conect
 
 const app = express();
 
+console.log("🕒 Hora atual do Node.js:", new Date().toString());
 
 //Iniciando o JOB
 startIntegracao();
